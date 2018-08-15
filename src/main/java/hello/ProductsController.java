@@ -40,4 +40,10 @@ public class ProductsController {
         repository.addProduct(new Product(name, Double.parseDouble(cost)));
         return "redirect:products";
     }
+
+    @DeleteMapping("/products/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        repository.deleteProduct(id);
+        return "redirect:products";
+    }
 }

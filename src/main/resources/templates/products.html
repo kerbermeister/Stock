@@ -15,8 +15,17 @@
     <tr th:each="product: ${products}">
         <td th:text="${product.name}"></td>
         <td th:text="${product.cost}"></td>
+        <td>
+            <form method="delete" th:action='${"products/" + product.id}'>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
+<p>
+    <span>Count:&nbsp</span>
+    <span th:text="${products.size()}"></span>
+</p>
 </body>
 </html>

@@ -1,6 +1,10 @@
 package hello;
 
+import java.time.Instant;
+import java.util.Objects;
+
 public class Product {
+    private Long id = Instant.now().toEpochMilli();
     private String name;
     private Double cost;
 
@@ -9,19 +13,33 @@ public class Product {
         this.cost = cost;
     }
 
-    public String getName() {
-        return name;
+    public Product(Long id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
     public Double getCost() {
         return cost;
     }
 
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
