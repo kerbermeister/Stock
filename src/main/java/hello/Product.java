@@ -1,10 +1,11 @@
 package hello;
 
-import java.time.Instant;
 import java.util.Objects;
 
 public class Product {
-    private Long id = Instant.now().toEpochMilli();
+    private static Long counter = 0L;
+
+    private Long id = counter++;
     private String name;
     private Double cost;
 

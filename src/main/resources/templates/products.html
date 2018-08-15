@@ -16,7 +16,7 @@
         <td th:text="${product.name}"></td>
         <td th:text="${product.cost}"></td>
         <td>
-            <form method="delete" th:action='${"products/" + product.id}'>
+            <form method="post" th:action='${"products/delete/" + product.id}'>
                 <input type="submit" value="Delete">
             </form>
         </td>

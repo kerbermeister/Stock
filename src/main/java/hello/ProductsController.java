@@ -38,12 +38,12 @@ public class ProductsController {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String create(@RequestParam("name") String name, @RequestParam("cost") String cost) {
         repository.addProduct(new Product(name, Double.parseDouble(cost)));
-        return "redirect:products";
+        return "redirect:/products";
     }
 
-    @DeleteMapping("/products/{id}")
+    @PostMapping("/products/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         repository.deleteProduct(id);
-        return "redirect:products";
+        return "redirect:/products";
     }
 }
