@@ -28,11 +28,16 @@ public class ProductsController {
         return "products";
     }
 
+    @GetMapping("/products/new")
+    public String newProduct() {
+
+        return "new";
+    }
+
     @PostMapping(path = "/products",
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String create(ServletServerHttpRequest request) throws IOException {
-        InputStream strem = request.getBody();
-//        repository.addProduct(product);
+    public String create(@RequestParam("name") String name, @RequestParam("cost") String cost) {
+        repository.addProduct(new Product(name, Double.parseDouble(cost)));
         return "redirect:products";
     }
 }
