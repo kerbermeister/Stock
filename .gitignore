@@ -35,10 +35,5 @@ crashlytics-build.properties
 fabric.properties
 
 *.iml
-.idea/.name
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
+.idea
 .mvn/
