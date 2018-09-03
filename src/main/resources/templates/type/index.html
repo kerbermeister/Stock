@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Types</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="type: ${types}">
+        <td th:text="${type.id}"></td>
+        <td th:text="${type.typeName}"></td>
+        <td>
+            <form th:method="delete" th:action='${"products/" + product.id}'>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<p>
+    <span>Count:&nbsp</span>
+    <span th:text="${types.size()}"></span>
+</p>
+</body>
+</html>
