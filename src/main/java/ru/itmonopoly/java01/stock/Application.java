@@ -11,16 +11,6 @@ import java.sql.SQLException;
 public class Application {
 
     public static void main(String[] args) throws SQLException {
-
-        Connection con = DriverManager.getConnection(
-                "jdbc:mysql://address=(host=localhost)(port=3306)(serverTimezone=UTC)/study",
-                "root",
-                "rootroot");
-
-
-
-
         SpringApplication.run(Application.class, args);
     }
-
 }

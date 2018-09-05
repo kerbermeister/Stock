@@ -16,8 +16,18 @@
         <td th:text="${type.id}"></td>
         <td th:text="${type.typeName}"></td>
         <td>
-            <form th:method="delete" th:action='${"products/" + product.id}'>
+            <form th:method="delete" th:action='${"types/delete/" + type.id}'>
                 <input type="submit" value="Delete">
+            </form>
+        </td>
+        <td>
+            <form th:method="get" th:action='${"types/edit/" + type.id}'>
+                <input type="submit" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form th:method="get" th:action='${"types/info/" + type.id}'>
+                <input type="submit" value="Info">
             </form>
         </td>
     </tr>

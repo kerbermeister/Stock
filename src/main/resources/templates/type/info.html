@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Models:</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Models:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="model: ${models}">
+        <td th:text="${model.id}"></td>
+        <td th:text="${model.name}"></td>
+        <td th:text="${model.vendorCode}"></td>
+        <td th:text="${model.typeId}"></td>
+    </tr>
+    <td>
+        <form th:method="get" th:action='${"/types/info/" + typeId + "/add"}'>
+            <input type="submit" value="Add">
+        </form>
+    </td>
+    </tbody>
+</table>
+<p>
+    <span>Count:&nbsp</span>
+    <span th:text="${models.size()}"></span>
+</p>
+
+</body>
+</body>
+</html>

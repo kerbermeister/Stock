@@ -1,14 +1,12 @@
 package ru.itmonopoly.java01.stock.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Model {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column
