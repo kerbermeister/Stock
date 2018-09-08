@@ -37,5 +37,8 @@
     <span>Count:&nbsp</span>
     <span th:text="${types.size()}"></span>
 </p>
+<form th:method="get" th:action='${"types/new"}'>
+    <input type="submit" value="Add">
+</form>
 </body>
 </html>
