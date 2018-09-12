@@ -61,6 +61,4 @@ public class TypeController {
         typeRepository.save(type);
         return "redirect:/types";
     }
-
-
 }
