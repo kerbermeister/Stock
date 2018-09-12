@@ -1,6 +1,7 @@
 package ru.itmonopoly.java01.stock.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Model {
@@ -58,4 +59,8 @@ public class Model {
 
     @ManyToOne
     private Type type;
+
+    @ManyToMany(mappedBy = "models")
+    private List<Part> parts;
+
 }
