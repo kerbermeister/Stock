@@ -16,10 +16,9 @@
         <td th:text="${model.id}"></td>
         <td th:text="${model.name}"></td>
         <td th:text="${model.vendorCode}"></td>
-        <td th:text="${model.typeId}"></td>
     </tr>
     <td>
-        <form th:method="get" th:action='${"/types/info/" + typeId + "/add"}'>
+        <form th:method="get" th:action='${"/types/info/" + id + "/add"}'>
             <input type="submit" value="Add">
         </form>
     </td>

@@ -4,6 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Model {
+    public Model () {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,6 +46,12 @@ public class Model {
 
     @Column
     private String name;
+
+    public Model(String name, String vendorCode, Type type) {
+        this.name = name;
+        this.vendorCode = vendorCode;
+        this.type = type;
+    }
 
     @Column(name = "vendor_code")
     private String vendorCode;
