@@ -16,6 +16,11 @@
         <td th:text="${model.id}"></td>
         <td th:text="${model.name}"></td>
         <td th:text="${model.vendorCode}"></td>
+        <td>
+            <form th:method="get" th:action='${"/types/info/" + model.id + "/parts"}'>
+                <input type="submit" value="Parts">
+            </form>
+        </td>
     </tr>
     <td>
         <form th:method="get" th:action='${"/types/info/" + id + "/add"}'>

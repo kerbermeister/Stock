@@ -8,6 +8,8 @@ import ru.itmonopoly.java01.stock.model.Type;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.TypeRepository;
 
+import static java.util.Arrays.asList;
+
 @Controller
 @RequestMapping("/types/info")
 public class ModelController {
@@ -24,7 +26,7 @@ public class ModelController {
 
     @GetMapping("/{id}")
     public String typeInfo(@PathVariable("id") Long id, Model model, Model model2) {
-        model.addAttribute("models", modelRepository.findAll());
+        model.addAttribute("models", modelRepository.findAllByType_Id(id));
         model2.addAttribute("id", id);
         return "type/info";
     }
@@ -36,11 +38,10 @@ public class ModelController {
     }
 
     @PostMapping("/{id}/add")
-    public String createModel(Model modelSpring, @PathVariable ("id") Long id, @RequestParam ("name") String name, @RequestParam ("vendor_code") String vendor_code) {
+    public String createModel(@PathVariable ("id") Long id, @RequestParam ("name") String name, @RequestParam ("vendor_code") String vendor_code) {
         Type type = typeRepository.findById(id).get();
         ru.itmonopoly.java01.stock.model.Model model = new ru.itmonopoly.java01.stock.model.Model(name, vendor_code, type);
         modelRepository.save(model);
-        modelSpring.addAttribute("models", modelRepository.findAll());
         return "redirect:/types/info/{id}";
     }
 }
