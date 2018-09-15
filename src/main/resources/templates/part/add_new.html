@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new part</title>
+</head>
+<body>
+<form th:action = '${"/types/info/" + id + "/parts/add_new"}' method="post" modelAttribute="part">
+    <label for = "name">Name</label>
+    <input type = "text" name = "name" id = "name">
+    <label for = "spec">Specification</label>
+    <input type = "text" name = "spec" id = "spec">
+    <input type="submit">
+</form>
+</body>
+</html>
