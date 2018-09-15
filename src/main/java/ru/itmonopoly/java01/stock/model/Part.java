@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -43,4 +44,19 @@ public class Part {
 
     @ManyToMany
     private List<Model> models;
+
+    public List<Model> getModels() {
+        return models;
+    }
+
+    public boolean addModel(Model model) {
+        models.add(model);
+        return true;
+    }
+
+    public Part(String name, String spec) {
+        this.spec = spec;
+        this.name = name;
+        models = new ArrayList<>();
+    }
 }
