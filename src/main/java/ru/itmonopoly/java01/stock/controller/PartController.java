@@ -24,7 +24,7 @@ public class PartController {
     @RequestMapping
     public String partsList(@PathVariable ("id") Long id, Model model, Model model2) {
         model.addAttribute("id", id);
-        model2.addAttribute("parts", partRepository.findAll());
+        model2.addAttribute("parts", partRepository.partsModel(id));
         return "part/parts_list";
     }
 

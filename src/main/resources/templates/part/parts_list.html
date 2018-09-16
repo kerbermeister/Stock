@@ -2,9 +2,23 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Parts list</title>
 </head>
 <body>
+<table>
+    <thead>
+    <tr>
+        <th>Parts:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="part: ${parts}">
+        <td th:text="${part.id}"></td>
+        <td th:text="${part.name}"></td>
+        <td th:text="${part.spec}"></td>
+    </tr>
+    </tbody>
+</table>
 <p>
     <span>Count:&nbsp</span>
     <span th:text="${parts.size()}"></span>

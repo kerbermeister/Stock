@@ -21,6 +21,10 @@ public class Model {
         return name;
     }
 
+    public List<Part> getParts() {
+        return parts;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
