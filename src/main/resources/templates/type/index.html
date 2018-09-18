@@ -33,6 +33,7 @@
     </tr>
     </tbody>
 </table>
+
 <p>
     <span>Count:&nbsp</span>
     <span th:text="${types.size()}"></span>
@@ -40,5 +41,29 @@
 <form th:method="get" th:action='${"types/new"}'>
     <input type="submit" value="Add">
 </form>
+
+<p>
+    <span>Parts:
+    </span>
+</p>
+
+<table>
+
+    <form th:method="post" th:action='${"/types"}'>
+        <input type="text" name="filter" id="filter">
+        <input type="submit" value="Find">
+    </form>
+
+    <tbody>
+    <tr th:each="part: ${parts}">
+        <td th:text="${part.id}"></td>
+        <td th:text="${part.name}"></td>
+        <td th:text="${part.spec}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
 </body>
 </html>

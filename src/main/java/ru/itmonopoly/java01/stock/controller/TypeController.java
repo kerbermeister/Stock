@@ -5,11 +5,14 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.model.Type;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
+import ru.itmonopoly.java01.stock.repo.PartRepository;
 import ru.itmonopoly.java01.stock.repo.TypeRepository;
 
 import java.nio.file.Path;
+import java.util.List;
 
 @Controller
 @RequestMapping("/types")
@@ -17,16 +20,30 @@ public class TypeController {
 
     private final TypeRepository typeRepository;
     private final ModelRepository modelRepository;
+    private final PartRepository partRepository;
 
     @Autowired
-    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository) {
+    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository) {
         this.typeRepository = typeRepository;
         this.modelRepository = modelRepository;
+        this.partRepository = partRepository;
+    }
+
+    @PostMapping
+    public String filter(@RequestParam ("filter") String filter, Model model) {
+        if (!filter.isEmpty() && filter != null) {
+            model.addAttribute("parts", partRepository.findPartBySpec(filter));
+        } else
+            model.addAttribute("parts", partRepository.findAll());
+
+        model.addAttribute("types", typeRepository.findAll());
+        return "type/index";
     }
 
     @GetMapping
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());
+        model.addAttribute("parts", partRepository.findAll());
         return "type/index";
     }
 
@@ -35,7 +52,7 @@ public class TypeController {
         return "type/new";
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public String create(@RequestParam String typeName) {
         typeRepository.save(new Type(typeName));
         return "redirect:/types";

@@ -23,9 +23,7 @@
     <span>Count:&nbsp</span>
     <span th:text="${parts.size()}"></span>
 </p>
-<p>
-    <span th:text="${id}"></span>
-</p>
+
 <form th:method="get" th:action='${"/types/info/" + id + "/parts/add_new"}'>
     <input type="submit" value="Add New">
 </form>

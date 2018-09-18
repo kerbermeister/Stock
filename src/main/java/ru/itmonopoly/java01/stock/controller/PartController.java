@@ -8,6 +8,8 @@ import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.PartRepository;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/types/info/{id}/parts")
