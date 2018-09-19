@@ -66,6 +66,9 @@
 <form th:method="post" th:action='${"types/add_income"}'>
     <input type="submit" value="Add income">
 </form>
-
+<form th:method="post" th:action='${"types/add_outcome"}'>
+    <input type="submit" value="Outcome">
+</form>
+<span th:text="${totalItems}"></span>
 </body>
 </html>

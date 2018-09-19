@@ -4,40 +4,37 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class IncomeItem {
-
+public class OutcomeItem {
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Income income;
 
     @NotNull
     @ManyToOne
     private Part part;
 
-    public IncomeItem(@NotNull Part part, @NotNull Long count, Income income) {
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Outcome outcome;
+
+    @NotNull
+    private Long count;
+
+    public OutcomeItem() {
+
+    }
+
+    public OutcomeItem(@NotNull Part part, Outcome outcome, @NotNull Long count) {
         this.part = part;
+        this.outcome = outcome;
         this.count = count;
-        this.income = income;
     }
 
     public Long getId() {
-
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Income getIncome() {
-        return income;
-    }
-
-    public void setIncome(Income income) {
-        this.income = income;
     }
 
     public Part getPart() {
@@ -48,18 +45,19 @@ public class IncomeItem {
         this.part = part;
     }
 
+    public Outcome getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(Outcome outcome) {
+        this.outcome = outcome;
+    }
+
     public Long getCount() {
         return count;
     }
 
     public void setCount(Long count) {
         this.count = count;
-    }
-
-    @NotNull
-    private Long count;
-
-    public IncomeItem() {
-
     }
 }

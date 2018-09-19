@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.model.Type;
+import ru.itmonopoly.java01.stock.repo.IncomeItemRepository;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.PartRepository;
 import ru.itmonopoly.java01.stock.repo.TypeRepository;
@@ -21,12 +22,14 @@ public class TypeController {
     private final TypeRepository typeRepository;
     private final ModelRepository modelRepository;
     private final PartRepository partRepository;
+    private final IncomeItemRepository incomeItemRepository;
 
     @Autowired
-    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository) {
+    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository, IncomeItemRepository incomeItemRepository) {
         this.typeRepository = typeRepository;
         this.modelRepository = modelRepository;
         this.partRepository = partRepository;
+        this.incomeItemRepository = incomeItemRepository;
     }
 
     @PostMapping
@@ -44,6 +47,12 @@ public class TypeController {
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());
         model.addAttribute("parts", partRepository.findAll());
+        List<Long> list = incomeItemRepository.getTotalIncomeItemsQty();
+        Long total = 0L;
+        for (Long qty : list) {
+            total+=qty;
+        }
+        model.addAttribute("totalItems", total);
         return "type/index";
     }
 

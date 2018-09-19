@@ -8,23 +8,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class Income {
-
+public class Outcome {
     @Id
     @GeneratedValue
     private Long id;
-
-    private LocalDate date;
-
-    @OneToMany(mappedBy = "income")
-    private List<IncomeItem> items;
-
-    public Income(LocalDate date) {
-        this.date = date;
-    }
+    private LocalDate localDate;
 
     public Long getId() {
-
         return id;
     }
 
@@ -32,22 +22,30 @@ public class Income {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getLocalDate() {
+        return localDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
-    public List<IncomeItem> getItems() {
+    public List<OutcomeItem> getItems() {
         return items;
     }
 
-    public void setItems(List<IncomeItem> items) {
+    public void setItems(List<OutcomeItem> items) {
         this.items = items;
     }
 
-    public Income () {}
+    @OneToMany(mappedBy = "outcome")
+    private List<OutcomeItem> items;
+
+    public Outcome(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public Outcome() {}
+
 
 }

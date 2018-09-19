@@ -41,6 +41,7 @@ public class IncomeController {
         for (Part part : parts) {
             IncomeItem incomeItem = new IncomeItem(part, 10L, income);
             incomeItemRepository.save(incomeItem);
+            incomeItems.add(incomeItem);
         }
         income.setItems(incomeItems);
         incomeRepository.save(income);

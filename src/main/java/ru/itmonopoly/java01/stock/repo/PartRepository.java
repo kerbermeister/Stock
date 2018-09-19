@@ -16,4 +16,7 @@ public interface PartRepository extends CrudRepository<Part, Long> {
     @Query("SELECT p FROM Part p WHERE p.spec=:spec")
     List<Part> findPartBySpec(@Param("spec") String spec);
 
+    @Query("SELECT p FROM Part p")
+    List<Part> getAllParts();
+
 }
