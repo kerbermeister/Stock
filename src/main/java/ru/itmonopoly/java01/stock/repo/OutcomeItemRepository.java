@@ -14,5 +14,4 @@ public interface OutcomeItemRepository extends CrudRepository<OutcomeItem, Long>
 
     @Query("SELECT o.count FROM OutcomeItem o WHERE o.part.id=:id")
     List<Long> getPartOutcomeQty(@Param ("id") Long id);
-
 }

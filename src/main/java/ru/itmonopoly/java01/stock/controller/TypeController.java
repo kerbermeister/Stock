@@ -5,12 +5,10 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.itmonopoly.java01.stock.model.IncomeItem;
 import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.model.Type;
-import ru.itmonopoly.java01.stock.repo.IncomeItemRepository;
-import ru.itmonopoly.java01.stock.repo.ModelRepository;
-import ru.itmonopoly.java01.stock.repo.PartRepository;
-import ru.itmonopoly.java01.stock.repo.TypeRepository;
+import ru.itmonopoly.java01.stock.repo.*;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -23,13 +21,16 @@ public class TypeController {
     private final ModelRepository modelRepository;
     private final PartRepository partRepository;
     private final IncomeItemRepository incomeItemRepository;
+    private final OutcomeItemRepository outcomeItemRepository;
 
     @Autowired
-    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository, IncomeItemRepository incomeItemRepository) {
+    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository, IncomeItemRepository incomeItemRepository
+    , OutcomeItemRepository outcomeItemRepository) {
         this.typeRepository = typeRepository;
         this.modelRepository = modelRepository;
         this.partRepository = partRepository;
         this.incomeItemRepository = incomeItemRepository;
+        this.outcomeItemRepository = outcomeItemRepository;
     }
 
     @PostMapping
@@ -47,11 +48,26 @@ public class TypeController {
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());
         model.addAttribute("parts", partRepository.findAll());
-        List<Long> list = incomeItemRepository.getTotalIncomeItemsQty();
+
+        Iterable<Part> parts = partRepository.findAll();
+        Long partTotalIncomeQty = 0L;
+        Long partTotalOutcomeQty = 0L;
         Long total = 0L;
-        for (Long qty : list) {
-            total+=qty;
+        for (Part part : parts) {
+            Long partId = part.getId();
+            List<Long> partOutcomeQuantity = outcomeItemRepository.getPartOutcomeQty(partId);
+            List<Long> partIncomeQuantity = incomeItemRepository.getPartIncomeQty(partId);
+
+            for (Long qty : partIncomeQuantity) {
+                partTotalIncomeQty+=qty;
+            }
+            for (Long qty : partOutcomeQuantity) {
+                partTotalOutcomeQty+=qty;
+            }
+
+            total+=(partTotalIncomeQty-partTotalOutcomeQty);
         }
+        
         model.addAttribute("totalItems", total);
         return "type/index";
     }
