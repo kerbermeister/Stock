@@ -1,10 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <div class="container">
+            
+        </div>
+    </section>
+
+
 <table>
     <thead>
     <tr>
@@ -60,6 +89,13 @@
         <td th:text="${part.name}"></td>
         <td th:text="${part.spec}"></td>
     </tr>
+    </tbody>
+</table>
+
+<table>
+    <tbody>
+        <tr th:each="long: ${partsQty}">
+            <td th:text="${long}"></td>
     </tbody>
 </table>
 

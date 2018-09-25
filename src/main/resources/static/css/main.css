@@ -1,0 +1,46 @@
+﻿body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	box-sizing: border-box;;
+}
+
+header {
+	 background: #333333;
+ 	 height: 80px;
+}
+
+.container {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.logo {
+
+}
+
+nav {
+	float: right;
+	margin-top: 30px;
+}
+
+.menu {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+.menu li {
+	float: left;
+	display: block;
+	margin-right: 41px;
+}
+
+.menu a {
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+}

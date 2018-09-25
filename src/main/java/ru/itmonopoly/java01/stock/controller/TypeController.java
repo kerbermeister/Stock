@@ -10,8 +10,12 @@ import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.model.Type;
 import ru.itmonopoly.java01.stock.repo.*;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/types")
@@ -48,7 +52,14 @@ public class TypeController {
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());
         model.addAttribute("parts", partRepository.findAll());
+        List<Object[]> list = incomeItemRepository.getPartsQty();
+        for (Object[] obj : list) {
+            BigInteger id = (BigInteger) obj[0];
+            BigDecimal count = (BigDecimal) obj[1];
+            System.out.println("id: " + id + " | count: " + count);
+        }
 
+        model.addAttribute("partsQty", list);
         Iterable<Part> parts = partRepository.findAll();
         Long partTotalIncomeQty = 0L;
         Long partTotalOutcomeQty = 0L;
