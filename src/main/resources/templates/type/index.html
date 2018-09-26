@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Types page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/main.css"/>
 </head>
@@ -29,39 +29,53 @@
 
     <section>
         <div class="container">
-            
+            <div class="mainfield">
+                <div class="tytle">
+                        <span>Types list</span>
+                </div>
+
+                <div class="search_bar">
+                    <form th:method="post" th:action='${"/types"}'>
+                        <input type="text" name="filter" id="filter">
+                        <input type="submit" value="Find">
+                    </form>
+                </div>
+                
+                <table>
+                <thead>
+                <tr>
+                    <th>Type ID</th>
+                    <th>Type name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="type: ${types}">
+                    <td th:text="${type.id}"></td>
+                    <td th:text="${type.typeName}"></td>
+                    <td>
+                        <form th:method="delete" th:action='${"types/delete/" + type.id}'>
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                    <td>
+                        <form th:method="get" th:action='${"types/edit/" + type.id}'>
+                            <input type="submit" value="Edit">
+                        </form>
+                    </td>
+                    <td>
+                        <form th:method="get" th:action='${"types/info/" + type.id}'>
+                            <input type="submit" value="Info">
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>        
+            </div>
         </div>
     </section>
 
 
-<table>
-    <thead>
-    <tr>
-        <th>Types</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="type: ${types}">
-        <td th:text="${type.id}"></td>
-        <td th:text="${type.typeName}"></td>
-        <td>
-            <form th:method="delete" th:action='${"types/delete/" + type.id}'>
-                <input type="submit" value="Delete">
-            </form>
-        </td>
-        <td>
-            <form th:method="get" th:action='${"types/edit/" + type.id}'>
-                <input type="submit" value="Edit">
-            </form>
-        </td>
-        <td>
-            <form th:method="get" th:action='${"types/info/" + type.id}'>
-                <input type="submit" value="Info">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
 
 <p>
     <span>Count:&nbsp</span>

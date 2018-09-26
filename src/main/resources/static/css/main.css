@@ -19,7 +19,7 @@ header {
 }
 
 .logo {
-
+	float: left;
 }
 
 nav {
@@ -44,3 +44,48 @@ nav {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+
+.mainfield {
+	background: #E1DFDC;
+}
+
+.tytle {
+	font-size: 20px;
+	/*color: #fff;*/
+	text-align: center;
+	text-transform: uppercase;
+}
+
+table {
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #666666;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #999999;
+}
+th:first-child, td:first-child {
+text-align: left;
+}
+
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#BFC0C0; 
+    border:0 none;
+    width: 90px;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
