@@ -36,11 +36,11 @@
 
                 <div class="search_bar">
                     <form th:method="post" th:action='${"/types"}'>
-                        <input type="text" name="filter" id="filter">
+                        <input type="text" placeholder="Search..." name="filter" id="filter">
                         <input type="submit" value="Find">
                     </form>
                 </div>
-                
+
                 <table>
                 <thead>
                 <tr>
@@ -71,19 +71,24 @@
                 </tbody>
             </table>        
             </div>
+
+            <div class="bottom_bar">
+                <form th:method="get" th:action='${"types/new"}'>
+                    <input type="submit" value="Add">
+                </form> 
+
+                <div class="total_count">
+                        TOTAL COUNT:&nbsp
+                        <span th:text="${types.size()}"></span>
+                </div>
+            </div>
         </div>
     </section>
 
 
 
 
-<p>
-    <span>Count:&nbsp</span>
-    <span th:text="${types.size()}"></span>
-</p>
-<form th:method="get" th:action='${"types/new"}'>
-    <input type="submit" value="Add">
-</form>
+
 
 <p>
     <span>Parts:
