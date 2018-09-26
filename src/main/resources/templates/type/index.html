@@ -16,9 +16,11 @@
                         <li>
                             <a href="#">Home</a>
                         </li>
-                        
                         <li>
                             <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
                         </li>
                     </ul>
                 </nav>    
@@ -46,12 +48,14 @@
                 <tr>
                     <th>Type ID</th>
                     <th>Type name</th>
+                    <th>Models</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="type: ${types}">
                     <td th:text="${type.id}"></td>
                     <td th:text="${type.typeName}"></td>
+                    <td>#</td>
                     <td>
                         <form th:method="delete" th:action='${"types/delete/" + type.id}'>
                             <input type="submit" value="Delete">
