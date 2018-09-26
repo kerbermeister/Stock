@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Models:</title>
+    <title>Models page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
-<table>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="/img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
+
+<section>
+    <div class="container">
+    <!-- <table>
     <thead>
     <tr>
         <th>Models:</th>
@@ -29,11 +53,13 @@
     </td>
     </tbody>
 </table>
-<p>
-    <span>Count:&nbsp</span>
-    <span th:text="${models.size()}"></span>
-</p>
+    <p>
+        <span>Count:&nbsp</span>
+        <span th:text="${models.size()}"></span>
+    </p>     -->
+    </div>
+</section>
 
-</body>
+
 </body>
 </html>
