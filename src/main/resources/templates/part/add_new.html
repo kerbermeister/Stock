@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Add new part</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
-<form th:action = '${"/types/info/" + id + "/parts/add_new"}' method="post" modelAttribute="part">
-    <label for = "name">Name</label>
-    <input type = "text" name = "name" id = "name">
-    <label for = "spec">Specification</label>
-    <input type = "text" name = "spec" id = "spec">
-    <input type="submit">
-</form>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="/img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="mainfield">
+                <div class="tytle">
+                        <span>Add new part</span>
+                </div>
+
+				<form th:action = '${"/types/info/" + id + "/parts/add_new"}' method="post" modelAttribute="part">
+				    <label for = "name">Name</label>
+				    <input type = "text" name = "name" id = "name">
+				    <label for = "spec">Specification</label>
+				    <input type = "text" name = "spec" id = "spec">
+				    <input type="submit" value="Add">
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

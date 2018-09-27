@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Type Edit Page</title>
+    <title>Edit type page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="/img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
 
-<tr> Edit: </tr>
-<form th:action='${"/types/edit/" + id}' method="post" modelAttribute="type">
-    <label for="typeName">Name</label>
-    <input type="text" name="typeName" id="typeName">
-    <input type="submit">
-</form>
+    <section>
+        <div class="container">
+            <div class="mainfield">
+                <div class="tytle">
+                        <span>Edit type</span>
+                </div>
+
+				<form th:action='${"/types/edit/" + id}' method="post" modelAttribute="type">
+				    <label for="typeName">Name:</label>
+				    <input type="text" name="typeName" id="typeName">
+				    <input type="submit" value="Save">
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>

@@ -37,17 +37,6 @@ public class TypeController {
         this.outcomeItemRepository = outcomeItemRepository;
     }
 
-    @PostMapping
-    public String filter(@RequestParam ("filter") String filter, Model model) {
-        if (!filter.isEmpty() && filter != null) {
-            model.addAttribute("parts", partRepository.findPartBySpec(filter));
-        } else
-            model.addAttribute("parts", partRepository.findAll());
-
-        model.addAttribute("types", typeRepository.findAll());
-        return "type/index";
-    }
-
     @GetMapping
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());

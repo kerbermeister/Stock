@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Parts page</title>
+    <title>All parts page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/main.css"/>
 </head>
@@ -27,15 +27,15 @@
         </div>
     </header>
 
+
     <section>
         <div class="container">
             <div class="mainfield">
                 <div class="tytle">
-                    <span>Parts list</span>
+                        <span>Parts list</span>
                 </div>
-
                 <div class="search_bar">
-                    <form th:method="post" th:action='${"/types"}'>
+                    <form th:method="post" th:action='${"/all_parts"}'>
                         <input type="text" placeholder="Search..." name="filter" id="filter">
                             <input type="submit" value="Find">
                     </form>
@@ -61,13 +61,13 @@
             </div>
 
             <div class="bottom_bar">
-                <form th:method="get" th:action='${"/types/info/" + id + "/parts/add_new"}'>
-                    <input type="submit" value="Add">
+                <form th:method="get" th:action='${"####"}'>
+                    <input type="submit" value="Create">
                 </form> 
 
                 <div class="total_count">
                     TOTAL COUNT:&nbsp
-                    <span th:text="${parts.size()}"></span>
+                    <span th:text="${size}"></span>
                 </div>
             </div>
         </div>

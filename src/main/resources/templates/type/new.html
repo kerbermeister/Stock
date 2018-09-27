@@ -1,14 +1,46 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Add new type</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
-<form action="/types/new" method="post">
-    <label for="typeName">Name</label>
-    <input type="text" name="typeName" id="typeName">
-    <input type="submit">
-</form>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="/img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="mainfield">
+                <div class="tytle">
+                        <span>Add new type</span>
+                </div>
+
+				<form action="/types/new" method="post">
+				    <label for="typeName">Name:</label>
+				    <input type="text" name="typeName" id="typeName">
+				    <input type="submit" value="Create">
+				</form>
+			</div>
+		</div>
+	</section>
 </body>
 </html>
