@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Parts list</title>
+    <title>Parts page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Parts:</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="part: ${parts}">
-        <td th:text="${part.id}"></td>
-        <td th:text="${part.name}"></td>
-        <td th:text="${part.spec}"></td>
-    </tr>
-    </tbody>
-</table>
-<p>
-    <span>Count:&nbsp</span>
-    <span th:text="${parts.size()}"></span>
-</p>
+    <header>
+        <div class="container">
+            <div class="heading">
+                <img src="/img/logo.png" alt="Detail" class="logo">
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Types</a>
+                        </li>
+                        <li>
+                            <a href="#">Parts</a>
+                        </li>
+                    </ul>
+                </nav>    
+            </div>
+        </div>
+    </header>
 
-<form th:method="get" th:action='${"/types/info/" + id + "/parts/add_new"}'>
-    <input type="submit" value="Add New">
-</form>
+    <section>
+        <div class="container">
+            <div class="mainfield">
+                <div class="tytle">
+                    <span>Models list</span>
+                </div>
+
+                <div class="search_bar">
+                    <form th:method="post" th:action='${"/types"}'>
+                        <input type="text" placeholder="Search..." name="filter" id="filter">
+                            <input type="submit" value="Find">
+                    </form>
+                </div>
+
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Part ID</th>
+                        <th>Part name</th>
+                        <th>Specification</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="part: ${parts}">
+                            <td th:text="${part.id}"></td>
+                            <td th:text="${part.name}"></td>
+                            <td th:text="${part.spec}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bottom_bar">
+                <form th:method="get" th:action='${"/types/info/" + id + "/parts/add_new"}'>
+                    <input type="submit" value="Add">
+                </form> 
+
+                <div class="total_count">
+                    TOTAL COUNT:&nbsp
+                    <span th:text="${parts.size()}"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
