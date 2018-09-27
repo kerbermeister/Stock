@@ -34,7 +34,7 @@
                         <span>Add new model</span>
                 </div>
 
-				<form th:action = '${"/types/info/" + id + "/add"}' method="post" modelAttribute="model">
+				<form th:action = '${"/types/info/type_id=" + id + "/add"}' method="post" modelAttribute="model">
 				    <label for = "name">Name</label>
 				    <input type = "text" name = "name" id = "name">
 				    <label for = "vendor_code">Vendor Code</label>
@@ -43,7 +43,7 @@
 				</form>
 
                 <div class="bottom_bar">
-                <form th:method="get" th:action='${"/types/info/" + id}'>
+                <form th:method="get" th:action='${"/types/info/type_id=" + id}'>
                     <input type="submit" value="Back">
                 </form> 
             </div>

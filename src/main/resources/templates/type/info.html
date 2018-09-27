@@ -57,7 +57,7 @@
                         <td th:text="${model.vendorCode}"></td>
                         <td>#</td>
                         <td>
-                            <form th:method="get" th:action='${"/types/info/" + model.id + "/parts"}'>
+                            <form th:method="get" th:action='${"/types/info/type_id=" + id + "/model_id=" + model.id + "/parts"}'>
                                 <input type="submit" value="Parts">
                             </form>
                         </td>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="bottom_bar">
-                <form th:method="get" th:action='${"/types/info/" + id + "/add"}'>
+                <form th:method="get" th:action='${"/types/info/type_id=" + id + "/add"}'>
                     <input type="submit" value="Add">
                 </form> 
 

@@ -83,20 +83,20 @@ public class TypeController {
         return "redirect:/types";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/type_id={id}")
     public String delete(@PathVariable("id") Long id) {
         typeRepository.deleteById(id);
         return "redirect:/types";
     }
 
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/edit/type_id={id}")
     public String edit(Model model, @PathVariable ("id") Long id) {
         model.addAttribute("id", id);
         return "type/edit";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/edit/type_id={id}")
     public String change (@PathVariable("id") Long id, @RequestParam ("typeName") String name) {
         Type type = typeRepository.findById(id).get();
         type.setTypeName(name);

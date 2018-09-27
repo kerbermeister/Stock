@@ -24,24 +24,24 @@ public class ModelController {
         this.modelRepository = modelRepository;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/type_id={id}")
     public String typeInfo(@PathVariable("id") Long id, Model model, Model model2) {
         model.addAttribute("models", modelRepository.findAllByType_Id(id));
         model2.addAttribute("id", id);
         return "type/info";
     }
 
-    @GetMapping("/{id}/add")
+    @GetMapping("/type_id={id}/add")
     public String addModel(Model model, @PathVariable ("id") Long id) {
         model.addAttribute("id", id);
         return "type/add_model";
     }
 
-    @PostMapping("/{id}/add")
+    @PostMapping("/type_id={id}/add")
     public String createModel(@PathVariable ("id") Long id, @RequestParam ("name") String name, @RequestParam ("vendor_code") String vendor_code) {
         Type type = typeRepository.findById(id).get();
         ru.itmonopoly.java01.stock.model.Model model = new ru.itmonopoly.java01.stock.model.Model(name, vendor_code, type);
         modelRepository.save(model);
-        return "redirect:/types/info/{id}";
+        return "redirect:/types/info/type_id={id}";
     }
 }

@@ -34,7 +34,7 @@
                         <span>Edit type</span>
                 </div>
 
-				<form th:action='${"/types/edit/" + id}' method="post" modelAttribute="type">
+				<form th:action='${"/types/edit/type_id=" + id}' method="post" modelAttribute="type">
 				    <label for="typeName">Name:</label>
 				    <input type="text" name="typeName" id="typeName">
 				    <input type="submit" value="Save">

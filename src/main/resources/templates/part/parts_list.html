@@ -61,10 +61,10 @@
             </div>
 
             <div class="bottom_bar">
-                <form th:method="get" th:action='${"/types/info/" + id + "/parts/add_new"}'>
+                <form th:method="get" th:action='${"/types/info/type_id=" + id + "/model_id=" + model_id + "/parts/add_new"}'>
                     <input type="submit" value="Add">
                 </form> 
-                <form th:method="get" th:action='${"/types/info/" + id}'>
+                <form th:method="get" th:action='${"/types/info/type_id=" + id}'>
                     <input type="submit" value="Back">
                 </form> 
                 <div class="total_count">

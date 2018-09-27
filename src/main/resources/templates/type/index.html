@@ -57,17 +57,17 @@
                     <td th:text="${type.typeName}"></td>
                     <td>#</td>
                     <td>
-                        <form th:method="delete" th:action='${"types/delete/" + type.id}'>
+                        <form th:method="delete" th:action='${"types/delete/type_id=" + type.id}'>
                             <input type="submit" value="Delete">
                         </form>
                     </td>
                     <td>
-                        <form th:method="get" th:action='${"types/edit/" + type.id}'>
+                        <form th:method="get" th:action='${"types/edit/type_id=" + type.id}'>
                             <input type="submit" value="Edit">
                         </form>
                     </td>
                     <td>
-                        <form th:method="get" th:action='${"types/info/" + type.id}'>
+                        <form th:method="get" th:action='${"types/info/type_id=" + type.id}'>
                             <input type="submit" value="Info">
                         </form>
                     </td>

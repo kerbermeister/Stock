@@ -34,7 +34,7 @@
                         <span>Add new part</span>
                 </div>
 
-				<form th:action = '${"/types/info/" + id + "/parts/add_new"}' method="post" modelAttribute="part">
+				<form th:action = '${"/types/info/type_id=" + id + "/model_id=" + model_id + "/parts/add_new"}' method="post" modelAttribute="part">
 				    <label for = "name">Name</label>
 				    <input type = "text" name = "name" id = "name">
 				    <label for = "spec">Specification</label>
@@ -42,6 +42,12 @@
 				    <input type="submit" value="Add">
 				</form>
 			</div>
+
+            <div class="bottom_bar">
+                <form th:method="get" th:action='${"/types/info/type_id=" + id + "/model_id=" + model_id + "/parts"}'>
+                    <input type="submit" value="Back">
+                </form> 
+            </div>
 		</div>
 	</section>
 </body>
