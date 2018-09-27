@@ -45,4 +45,11 @@ public class MainController {
         model.addAttribute("size", partRepository.count());
         return "part/all_parts";
     }
+
+    @GetMapping("/all_models")
+    public String allModels(Model model) {
+        model.addAttribute("models", modelRepository.findAll());
+        model.addAttribute("size", modelRepository.count());
+        return "model/all_models";
+    }
 }

@@ -1,21 +1,16 @@
 package ru.itmonopoly.java01.stock.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.itmonopoly.java01.stock.model.IncomeItem;
 import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.model.Type;
 import ru.itmonopoly.java01.stock.repo.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/types")

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Parts page</title>
+    <title>All models page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/main.css"/>
 </head>
@@ -19,10 +19,10 @@
                             <a href="/types">Types</a>
                         </li>
                         <li>
-                            <a href="/all_models">Models</a>
+                            <a href="/all_parts">Parts</a>
                         </li>
                         <li>
-                            <a href="/all_parts">Parts</a>
+                            <a href="/all_models">Models</a>
                         </li>
                     </ul>
                 </nav>    
@@ -34,49 +34,52 @@
         <div class="container">
             <div class="mainfield">
                 <div class="tytle">
-                    <span>Parts list</span>
+                    <span>Models list</span>
                 </div>
 
                 <div class="search_bar">
-                    <form th:method="post" th:action='${"/types"}'>
+                    <form th:method="post" th:action='${"###"}'>
                         <input type="text" placeholder="Search..." name="filter" id="filter">
                             <input type="submit" value="Find">
                     </form>
                 </div>
 
-
                 <table>
-                    <thead>
-                    <tr>
-                        <th>Part ID</th>
-                        <th>Part name</th>
-                        <th>Specification</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="part: ${parts}">
-                            <td th:text="${part.id}"></td>
-                            <td th:text="${part.name}"></td>
-                            <td th:text="${part.spec}"></td>
-                        </tr>
-                    </tbody>
+                <thead>
+                <tr>
+                    <th>Model ID</th>
+                    <th>Model name</th>
+                    <th>Vendor code</th>
+                    <th>Parts</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="model: ${models}">
+                        <td th:text="${model.id}"></td>
+                        <td th:text="${model.name}"></td>
+                        <td th:text="${model.vendorCode}"></td>
+                        <td>#</td>
+                        <td>
+                            <form th:method="get" th:action='${"####"}'>
+                                <input type="submit" value="Parts">
+                            </form>
+                        </td>
+                    </tr>  
+                </tbody>
                 </table>
             </div>
 
             <div class="bottom_bar">
-                <form th:method="get" th:action='${"/types/info/type_id=" + id + "/model_id=" + model_id + "/parts/add_new"}'>
+                <form th:method="get" th:action='${"####"}'>
                     <input type="submit" value="Add">
                 </form> 
-                <form th:method="get" th:action='${"/types/info/type_id=" + id}'>
-                    <input type="submit" value="Back">
-                </form> 
+                
                 <div class="total_count">
                     TOTAL COUNT:&nbsp
-                    <span th:text="${parts.size()}"></span>
+                    <span th:text="${size}"></span>
                 </div>
             </div>
         </div>
     </section>
-
 </body>
 </html>
