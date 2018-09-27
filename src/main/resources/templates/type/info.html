@@ -71,6 +71,10 @@
                     <input type="submit" value="Add">
                 </form> 
 
+                <form th:method="get" th:action='${"/types"}'>
+                    <input type="submit" value="Back">
+                </form> 
+                
                 <div class="total_count">
                     TOTAL COUNT:&nbsp
                     <span th:text="${models.size()}"></span>
