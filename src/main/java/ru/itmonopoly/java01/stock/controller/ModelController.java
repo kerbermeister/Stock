@@ -8,8 +8,6 @@ import ru.itmonopoly.java01.stock.model.Type;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.TypeRepository;
 
-import static java.util.Arrays.asList;
-
 @Controller
 @RequestMapping("/types/info")
 public class ModelController {

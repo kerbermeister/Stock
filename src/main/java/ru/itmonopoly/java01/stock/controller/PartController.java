@@ -8,9 +8,6 @@ import ru.itmonopoly.java01.stock.model.Part;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.PartRepository;
 
-import java.util.List;
-
-
 @Controller
 @RequestMapping("/types/info/type_id={id}/model_id={model_id}/parts")
 public class PartController {
@@ -44,6 +41,6 @@ public class PartController {
         ru.itmonopoly.java01.stock.model.Model model = modelRepository.findById(modelId).get();
         part.addModel(model);
         partRepository.save(part);
-        return "redirect:/types";
+        return "redirect:/types/info/type_id={id}/model_id={model_id}/parts";
     }
 }
