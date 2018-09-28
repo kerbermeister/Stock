@@ -64,6 +64,7 @@ public class TypeController {
         }
         
         model.addAttribute("totalItems", total);
+        model.addAttribute("size", typeRepository.count());
         return "type/index";
     }
 
@@ -97,5 +98,17 @@ public class TypeController {
         type.setTypeName(name);
         typeRepository.save(type);
         return "redirect:/types";
+    }
+
+    @PostMapping
+    public String search(@RequestParam("filter") String filter, Model model) {
+        if (filter != null && !filter.isEmpty()) {
+            model.addAttribute("types", typeRepository.findTypeByName(filter));
+            model.addAttribute("size", typeRepository.findTypeByName(filter).size());
+        } else {
+            model.addAttribute("types", typeRepository.findAll());
+            model.addAttribute("size", typeRepository.count());
+        }
+        return "type/index";
     }
 }

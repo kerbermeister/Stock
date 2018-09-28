@@ -37,4 +37,5 @@ public class Type {
     public Type(String name) {
         typeName = name;
     }
+
 }
