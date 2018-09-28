@@ -19,10 +19,10 @@
                             <a href="/types">Types</a>
                         </li>
                         <li>
-                            <a href="/all_parts">Parts</a>
+                            <a href="/all_models">Models</a>
                         </li>
                         <li>
-                            <a href="/all_models">Models</a>
+                            <a href="/all_parts">Parts</a>
                         </li>
                     </ul>
                 </nav>    
@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="search_bar">
-                    <form th:method="post" th:action='${"###"}'>
-                        <input type="text" placeholder="Search..." name="filter" id="filter">
+                    <form th:method="post" th:action='${"/all_models"}'>
+                        <input type="text" placeholder="Search..." name="model_filter" id="model_filter">
                             <input type="submit" value="Find">
                     </form>
                 </div>

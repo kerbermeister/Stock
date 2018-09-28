@@ -52,4 +52,16 @@ public class MainController {
         model.addAttribute("size", modelRepository.count());
         return "model/all_models";
     }
+
+    @PostMapping("/all_models")
+    public String searchModels(@RequestParam("model_filter") String filter, Model model) {
+        if(!filter.isEmpty() && filter!=null) {
+            model.addAttribute("models", modelRepository.findModelByName(filter));
+            model.addAttribute("size", modelRepository.findModelByName(filter).size());
+        } else {
+            model.addAttribute("models", modelRepository.findAll());
+            model.addAttribute("size", modelRepository.count());
+        }
+        return "model/all_models";
+    }
 }
