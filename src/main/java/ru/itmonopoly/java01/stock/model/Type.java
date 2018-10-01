@@ -1,9 +1,7 @@
 package ru.itmonopoly.java01.stock.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Type {
@@ -37,5 +35,8 @@ public class Type {
     public Type(String name) {
         typeName = name;
     }
+
+    @OneToMany(mappedBy = "type", cascade = CascadeType.REMOVE)
+    private List<Model> models;
 
 }
