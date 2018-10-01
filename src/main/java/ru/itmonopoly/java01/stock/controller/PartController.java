@@ -5,15 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itmonopoly.java01.stock.model.Part;
+import ru.itmonopoly.java01.stock.repo.IncomeItemRepository;
 import ru.itmonopoly.java01.stock.repo.ModelRepository;
 import ru.itmonopoly.java01.stock.repo.PartRepository;
+
+import java.math.BigInteger;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/types/info/type_id={id}/model_id={model_id}/parts")
 public class PartController {
     @Autowired
     PartRepository partRepository;
+
+    @Autowired
     ModelRepository modelRepository;
+
+    @Autowired
+    IncomeItemRepository repository;
 
     public PartController(PartRepository partRepository, ModelRepository modelRepository) {
         this.partRepository = partRepository;
@@ -21,10 +31,14 @@ public class PartController {
     }
 
     @RequestMapping
-    public String partsList(@PathVariable("id") Long id, @PathVariable ("model_id") Long modelId, Model model, Model model2) {
+    public String partsList(@PathVariable("id") Long id, @PathVariable ("model_id") Long modelId, Model model) {
         model.addAttribute("model_id", modelId);
         model.addAttribute("id", id);
-        model2.addAttribute("parts", partRepository.partsModel(modelId));
+        model.addAttribute("parts", partRepository.partsModel(modelId));
+        Map<Object, Object> counts = repository.getPartsQty()
+                .stream()
+                .collect(Collectors.toMap(obj -> ((BigInteger)obj[0]).longValue(), obj -> obj[1]));
+        model.addAttribute("counts", counts);
         return "part/parts_list";
     }
 
