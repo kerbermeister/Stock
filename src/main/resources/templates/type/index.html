@@ -87,49 +87,8 @@
                         TOTAL COUNT:&nbsp
                         <span th:text="${size}"></span>
                 </div>
-
-
-                <form th:method="post" th:action='${"types/add_income"}'>
-                    <input type="submit" value="Add income">
-                </form>
-                <form th:method="post" th:action='${"types/add_outcome"}'>
-                    <input type="submit" value="Outcome">
-                </form>
-
-
             </div>
         </div>
     </section>
 </body>
 </html>
-
-<!-- <table>
-
-    <form th:method="post" th:action='${"/types"}'>
-        <input type="text" name="filter" id="filter">
-        <input type="submit" value="Find">
-    </form>
-
-    <tbody>
-    <tr th:each="part: ${parts}">
-        <td th:text="${part.id}"></td>
-        <td th:text="${part.name}"></td>
-        <td th:text="${part.spec}"></td>
-    </tr>
-    </tbody>
-</table>
-
-<table>
-    <tbody>
-        <tr th:each="long: ${partsQty}">
-            <td th:text="${long}"></td>
-    </tbody>
-</table>
-
-<form th:method="post" th:action='${"types/add_income"}'>
-    <input type="submit" value="Add income">
-</form>
-<form th:method="post" th:action='${"types/add_outcome"}'>
-    <input type="submit" value="Outcome">
-</form>
-<span th:text="${totalItems}"></span> -->

@@ -18,53 +18,19 @@ public class TypeController {
 
     private final TypeRepository typeRepository;
     private final PartRepository partRepository;
-    private final IncomeItemRepository incomeItemRepository;
-    private final OutcomeItemRepository outcomeItemRepository;
 
     @Autowired
     public TypeController(TypeRepository typeRepository,
-                          PartRepository partRepository,
-                          IncomeItemRepository incomeItemRepository,
-                          OutcomeItemRepository outcomeItemRepository) {
+                          PartRepository partRepository) {
 
         this.typeRepository = typeRepository;
         this.partRepository = partRepository;
-        this.incomeItemRepository = incomeItemRepository;
-        this.outcomeItemRepository = outcomeItemRepository;
     }
 
     @GetMapping
     public String types(Model model) {
         model.addAttribute("types", typeRepository.findAll());
         model.addAttribute("parts", partRepository.findAll());
-        List<Object[]> list = incomeItemRepository.getPartsQty();
-        for (Object[] obj : list) {
-            BigInteger id = (BigInteger) obj[0];
-            BigDecimal count = (BigDecimal) obj[1];
-            System.out.println("id: " + id + " | count: " + count);
-        }
-
-        model.addAttribute("partsQty", list);
-        Iterable<Part> parts = partRepository.findAll();
-        Long partTotalIncomeQty = 0L;
-        Long partTotalOutcomeQty = 0L;
-        Long total = 0L;
-        for (Part part : parts) {
-            Long partId = part.getId();
-            List<Long> partOutcomeQuantity = outcomeItemRepository.getPartOutcomeQty(partId);
-            List<Long> partIncomeQuantity = incomeItemRepository.getPartIncomeQty(partId);
-
-            for (Long qty : partIncomeQuantity) {
-                partTotalIncomeQty+=qty;
-            }
-            for (Long qty : partOutcomeQuantity) {
-                partTotalOutcomeQty+=qty;
-            }
-
-            total+=(partTotalIncomeQty-partTotalOutcomeQty);
-        }
-        
-        model.addAttribute("totalItems", total);
         model.addAttribute("size", typeRepository.count());
         return "type/index";
     }
