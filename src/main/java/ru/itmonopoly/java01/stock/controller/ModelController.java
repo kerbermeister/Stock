@@ -36,7 +36,10 @@ public class ModelController {
     }
 
     @PostMapping("/type_id={id}/add")
-    public String createModel(@PathVariable ("id") Long id, @RequestParam ("name") String name, @RequestParam ("vendor_code") String vendor_code) {
+    public String createModel(@PathVariable ("id") Long id,
+                              @RequestParam ("name") String name,
+                              @RequestParam ("vendor_code") String vendor_code) {
+
         Type type = typeRepository.findById(id).get();
         ru.itmonopoly.java01.stock.model.Model model = new ru.itmonopoly.java01.stock.model.Model(name, vendor_code, type);
         modelRepository.save(model);

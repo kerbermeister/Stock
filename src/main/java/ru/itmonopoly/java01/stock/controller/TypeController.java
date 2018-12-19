@@ -17,16 +17,17 @@ import java.util.List;
 public class TypeController {
 
     private final TypeRepository typeRepository;
-    private final ModelRepository modelRepository;
     private final PartRepository partRepository;
     private final IncomeItemRepository incomeItemRepository;
     private final OutcomeItemRepository outcomeItemRepository;
 
     @Autowired
-    public TypeController(TypeRepository typeRepository, ModelRepository modelRepository, PartRepository partRepository, IncomeItemRepository incomeItemRepository
-    , OutcomeItemRepository outcomeItemRepository) {
+    public TypeController(TypeRepository typeRepository,
+                          PartRepository partRepository,
+                          IncomeItemRepository incomeItemRepository,
+                          OutcomeItemRepository outcomeItemRepository) {
+
         this.typeRepository = typeRepository;
-        this.modelRepository = modelRepository;
         this.partRepository = partRepository;
         this.incomeItemRepository = incomeItemRepository;
         this.outcomeItemRepository = outcomeItemRepository;
